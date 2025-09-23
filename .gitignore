@@ -1,0 +1,5 @@
+/.python-version
+/.venv
+/main.py
+/pyproject.toml
+/testEnv
