@@ -20,7 +20,7 @@ In contrast, off-policy methods use two separate policys, the behavior and targe
 
 The formula for the State Value Function is as follows:
 $$
-V^{\pi} (s) = \mathbb{E} \left[ G_t | S_t=s \right] , G_t = R_{t+1} + R_{t+2} + ... + R_{T}
+V^\pi(s)=\mathbb{E} [ G_t | S_t=s ] , G_t = R_{t+1} + R_{t+2} + ... + R_{T}
 $$
 
 Expanded:
