@@ -98,7 +98,7 @@ We need to continually explore our environment to update each state-action pair.
 
    DQNs introduce two major improvements for stability and data efficiency:
 
-   1. Experience Replay: Stores past transitions $(s,a,r,s^′)$ and samples them randomly to break the strong correlation between consecutive experiences and reuse data efficiently.
+   1. Experience Replay: Stores past transitions $(s,a,r,s')$ and samples them randomly to break the strong correlation between consecutive experiences and reuse data efficiently.
 
    2. Target Network: Uses a separate, slowly updated network $Q(s,a;\theta^−)$ to compute stable target values, reducing oscillations and divergence during learning.
 
