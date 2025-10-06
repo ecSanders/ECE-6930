@@ -20,12 +20,12 @@ In contrast, off-policy methods use two separate policys, the behavior and targe
 
 The formula for the State Value Function is as follows:
 $$
-V^{\pi}(s) = \mathbb{E}\left[ G_t | S_t=s\right], G_t = R_{t+1} + R_{t+2} + ... + R_{T}
+V^{\pi} (s) = \mathbb{E} \left[ G_t | S_t=s \right] , G_t = R_{t+1} + R_{t+2} + ... + R_{T}
 $$
 
 Expanded:
 $$
-V^{\pi}(s) = \sum_a \pi(a|s) \sum_{s',r} p(s',r|s,a)\left[r +\gamma V^\pi(s') \right] ,\text{for all $s \in S$}
+V^{\pi}(s) = \sum_{a} \pi(a|s) \sum_{s',r} p(s',r|s,a) \left[r +\gamma V^\pi(s') \right] ,\text{for all $s \in S$}
 $$
 
 In both equations, we see an the current state, $s$, as parameter of $V^\pi$. The first equation makes is easily clear that the State Value Function outputs the expected discounted reward. ($\mathbb{E}$ being expected value and $G_t$ being the sum of the reward, thus the expected total reward). In the lower equation, we can prove that it is the same equation by setting them equal and solving:
@@ -69,7 +69,7 @@ We need to continually explore our environment to update each state-action pair.
       1. Plain Action-Value Function:
       $$Q^\pi(s,a)=\mathbb{E}_\pi[G_t​∣S_t​=s,A_t​=a]$$
       2. Bellman Action-Value Function:
-      $$Q^\pi(s,a)=\mathbb{E}_\pi​[R_{t+1}​+\gammaQ^\pi(S_{t+1​},A_{t+1}​)∣S_t​=s,A_t​=a]$$
+      $$Q^\pi(s,a)=\mathbb{E}_\pi​[R_{t+1}​+\gamma Q^\pi(S_{t+1​},A_{t+1}​)∣S_t​=s,A_t​=a]$$
 
    The core objective of the Action-Value Function can be breifly stated as the expected return assigned to each state-action pair following a policy $\pi$. The "expected return" is what this question is asking about. 
 
