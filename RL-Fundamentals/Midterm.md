@@ -67,9 +67,9 @@ We need to continually explore our environment to update each state-action pair.
 
    There are two forms for the Action-Value Function. 
       1. Plain Action-Value Function:
-      $$Q^π(s,a)=\mathbb{E}_π​[G_t​∣S_t​=s,A_t​=a]$$
+      $$Q^\pi(s,a)=\mathbb{E}_\pi[G_t​∣S_t​=s,A_t​=a]$$
       2. Bellman Action-Value Function:
-      $$Q^π(s,a)=\mathbb{E}_π​[R_{t+1}​+γQ^π(S_{t+1​},A_{t+1}​)∣S_t​=s,A_t​=a]$$
+      $$Q^\pi(s,a)=\mathbb{E}_\pi​[R_{t+1}​+\gammaQ^\pi(S_{t+1​},A_{t+1}​)∣S_t​=s,A_t​=a]$$
 
    The core objective of the Action-Value Function can be breifly stated as the expected return assigned to each state-action pair following a policy $\pi$. The "expected return" is what this question is asking about. 
 
@@ -81,7 +81,7 @@ We need to continually explore our environment to update each state-action pair.
 
       2. Bellman Action-Value Function Equation:
 
-         Very similar to the plain version of the Action-Value Function, but expands it to use recursion $\left( Q^π(S_{t+1​},A_{t+1}​) \right)$. The $\mathbb{E}$ is the expected value, $R_{t+1}$ is the current reward from taking action $a$ in state $s$, $\gamma$ is the discount factor (0-1 where 0 means we only care about the immediate reward and 1 means we care about all future rewards equally, assuming episodes are finite), and lastly  $Q^π(S_{t+1​},A_{t+1}​)$ is the recursive call with the next state and action that will yield a future reward to be discounted by our $\gamma$ coefficient.
+         Very similar to the plain version of the Action-Value Function, but expands it to use recursion $\left( Q^\pi(S_{t+1​},A_{t+1}​) \right)$. The $\mathbb{E}$ is the expected value, $R_{t+1}$ is the current reward from taking action $a$ in state $s$, $\gamma$ is the discount factor (0-1 where 0 means we only care about the immediate reward and 1 means we care about all future rewards equally, assuming episodes are finite), and lastly  $Q^\pi(S_{t+1​},A_{t+1}​)$ is the recursive call with the next state and action that will yield a future reward to be discounted by our $\gamma$ coefficient.
 
 
 2. How does the Q-Table relate to the Action-Value function in Question 1?  
@@ -110,6 +110,19 @@ We need to continually explore our environment to update each state-action pair.
 
 You get to generate by hand what the Q-Table representation of this gridworld is going to be! Recall that the formula for updating your Q-Table is:  
 
+$$
+Q(s, a) = Q(s, a) + 0.5 \left( r + \max_{a′} Q(s′, a′) - Q(s, a) \right)
+$$
+
+**Gridworld**
+
+|     |     |     |
+|-----|-----|-----|
+| S0  | S1  | S2  |
+| S3  | Bomb (-1) | Goal (+1) |
+
+
+
 **Iteration 2**
 
 | State | Up | Down  | Left  | Right |
@@ -129,11 +142,6 @@ Where
 
 Please compute **5 iterations** of the Q-table as it learns.  
 
-
-### Update Rule
-$$\left[
-Q(s, a) = Q(s, a) + 0.5 \left( r + \max_{a′} Q(s′, a′) - Q(s, a) \right)
-\right]$$
 
 ### Q-Table Iterations
 
@@ -217,7 +225,7 @@ Q(s, a) = Q(s, a) + 0.5 \left( r + \max_{a′} Q(s′, a′) - Q(s, a) \right)
 **Observation:**  
 - The Q-values are converging toward +1 for goal and -1 for bomb, propagating back through the grid.  
 - S1 learns that right leads to the goal and down leads to the bomb.  
-- S2 learns that down is good (toward Goal) while left eventually propagates bomb penalties.  
+- S2 learns that down is good (toward goal) while left eventually propagates bomb penalties.  
 - S3 learns that left is bad (toward bomb).  
 
 ---
